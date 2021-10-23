@@ -1,0 +1,16 @@
+{
+  "name": "E-commerce-Product-Page",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tbuild": "tailwindcss -i ./src/styles.css -o ./public/tailwind.css ",
+    "twatch": "tailwindcss -o ./public/tailwind.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tailwindcss": "^2.2.17"
+  }
+}
