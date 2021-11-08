@@ -4,3 +4,61 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.link_transition {
+  @apply md:border-b-4 md:pb-10 border-transparent hover:border-primary-orange transition duration-200 ease-in cursor-pointer focus:outline-none focus:border-primary-orange;
+}
+
+.trans {
+  @apply transition duration-200 ease-in;
+}
+
+.thumbnail {
+  @apply w-full;
+}
+
+.icon {
+  fill: black;
+}
+
+.icon:hover {
+  fill: orange;
+}
+
+.thumb_container {
+  border-radius: 5px;
+  border: none;
+  outline: transparent;
+  overflow: hidden;
+  object-fit: cover;
+  cursor: pointer;
+  transition: opacity 200ms, outline 200ms;
+  transition-timing-function: ease-in;
+}
+
+.thumb_container:focus {
+  opacity: 0.5;
+  outline: 2px solid hsl(26, 100%, 55%);
+}
+
+.thumb_container:hover {
+  opacity: 0.5;
+}
+
+#add_to_cart {
+  position: relative;
+}
+
+#add_to_cart::after {
+  content: '';
+  position: absolute;
+  width: 85%;
+  border-radius: 0 0 10px 10px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: 20px;
+  margin: 0 5px 0;
+  box-shadow: 0 20px 20px 1px hsl(25, 100%, 94%);
+  z-index: -1;
+}

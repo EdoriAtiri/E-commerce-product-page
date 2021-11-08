@@ -18,10 +18,27 @@ module.exports = {
       fontFamily: {
         main: ['Kumbh Sans', 'sans-serif'],
       },
+      width: {
+        cart: '1.125rem',
+      },
+      inset: {
+        '-1.3': '-0.3125rem',
+        22: '5.5rem',
+        70: '70%',
+        75: '75%',
+        80: '80%',
+        90: '90%',
+        120: '120%',
+      },
+      fontSize: {
+        xxs: '0.65rem',
+      },
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      scale: ['active'],
+    },
   },
   plugins: [],
 };
