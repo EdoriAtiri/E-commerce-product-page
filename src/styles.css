@@ -25,7 +25,8 @@
   fill: orange;
 }
 
-.thumb_container {
+.thumb_style,
+.thumb_light_container {
   border-radius: 5px;
   border: none;
   outline: transparent;
@@ -36,20 +37,41 @@
   transition-timing-function: ease-in;
 }
 
-.thumb_container:focus {
+.thumb_style:focus {
   opacity: 0.5;
+}
+
+.thumb_style:hover {
+  opacity: 0.5;
+}
+
+.thumb_style:focus,
+.thumb_light_container:focus {
   outline: 2px solid hsl(26, 100%, 55%);
 }
 
-.thumb_container:hover {
-  opacity: 0.5;
+.thumb_light_container::before {
+  content: '';
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  inset: 0;
+  background: #ffffff;
+  transition: opacity 200ms ease-in;
 }
 
-#add_to_cart {
+.thumb_light_container:hover:before {
+  opacity: 0.6;
+}
+.thumb_light_container:focus:before {
+  opacity: 0.6;
+}
+
+#add_to_cart_btn {
   position: relative;
 }
 
-#add_to_cart::after {
+#add_to_cart_btn::after {
   content: '';
   position: absolute;
   width: 85%;
