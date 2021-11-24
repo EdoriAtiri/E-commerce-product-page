@@ -66,7 +66,6 @@ function values() {
     filled_cart.classList.add('hidden');
     cart_item_no.classList.add('opacity-0');
     cart_item_no.querySelector('small').innerHTML = no_items_selected;
-    console.log(no_items_selected);
   };
 }
 
@@ -85,7 +84,6 @@ function gallery() {
       } else {
         index = 4;
       }
-      console.log(index);
       img.src = `images/image-product-${index}.jpg`;
     });
     nextElem.addEventListener('click', () => {
@@ -94,7 +92,6 @@ function gallery() {
       } else {
         index = index + 1;
       }
-      console.log(index);
 
       img.src = `images/image-product-${index}.jpg`;
     });
@@ -127,18 +124,22 @@ function gallery() {
     lb_thumbs = document.querySelectorAll('.thumb_light_container'),
     lb_prev = document.querySelector('.lb_prev'),
     lb_next = document.querySelector('.lb_next');
-  console.log(lb_thumbs);
   // get the current index of the gallery when clicked and display lightbox
   let current_image = 0;
+
   image.addEventListener('click', (e) => {
     current_image = parseInt(e.target.src.slice(-19).match(/\d+/)[0]);
 
     lb_image.src = `images/image-product-${current_image}.jpg`;
-    lightbox.classList.remove('hidden');
-    dark.classList.add('md:block');
+
+    if (window.innerWidth >= 768) {
+      lightbox.classList.add('md:block');
+      dark.classList.add('md:block');
+    }
   });
+
   dark.onclick = () => {
-    lightbox.classList.add('hidden');
+    lightbox.classList.remove('md:block');
     dark.classList.remove('md:block');
   };
 
@@ -212,7 +213,6 @@ const openCloseMenuAndCart = () => {
       e.target.tagName !== 'path'
     ) {
       cart.classList.add('hidden');
-      console.log(e.target);
     }
   });
 };

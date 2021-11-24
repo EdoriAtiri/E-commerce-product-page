@@ -84,3 +84,8 @@
   box-shadow: 0 20px 20px 1px hsl(25, 100%, 94%);
   z-index: -1;
 }
+
+button:active {
+  transform: scale(0.95);
+  transition: transform ease-in 200ms;
+}
