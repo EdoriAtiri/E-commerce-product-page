@@ -1,5 +1,5 @@
 module.exports = {
-  purge: [],
+  purge: ['public/index.html', 'public/script.js'],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
@@ -22,7 +22,7 @@ module.exports = {
         cart: '1.125rem',
       },
       inset: {
-        '-1.3': '-0.3125rem',
+        itemNo: '-0.3125rem',
         22: '5.5rem',
         70: '70%',
         75: '75%',

@@ -1,16 +1,34 @@
 {
-  "name": "E-commerce-Product-Page",
+  "name": "e-commerce-product-page",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "E-commerce product page coding challenge",
   "scripts": {
     "tbuild": "tailwindcss -i ./src/styles.css -o ./public/tailwind.css ",
-    "twatch": "tailwindcss -o ./public/tailwind.css --watch"
+    "postbuild": "postcss ./src/styles.css -o ./public/tailwind.css ",
+    "start": "snowpack dev",
+    "build": "snowpack build "
   },
   "keywords": [],
-  "author": "",
+  "author": "Edori",
   "license": "ISC",
   "dependencies": {
+    "@snowpack/plugin-postcss": "^1.4.3",
+    "autoprefixer": "^10.4.0",
+    "postcss-cli": "^9.0.2",
     "tailwindcss": "^2.2.17"
-  }
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^4.1.1",
+    "cssnano": "^5.0.12",
+    "postcss": "^8.4.4",
+    "snowpack": "^3.8.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EdoriAtiri/E-commerce-product-page.git"
+  },
+  "bugs": {
+    "url": "https://github.com/EdoriAtiri/E-commerce-product-page/issues"
+  },
+  "homepage": "https://github.com/EdoriAtiri/E-commerce-product-page#readme"
 }

@@ -1,4 +1,3 @@
-let no_items_selected = 0;
 // Dark Overlay
 const dark = document.getElementById('dark_bg');
 
@@ -25,6 +24,7 @@ function values() {
     cart_item_no = document.getElementById('cart_item_no');
 
   // Reduce and Increase no of items customer want to purchase
+  let no_items_selected = 0;
   increase.addEventListener('click', () => {
     no_items_selected++;
     no_of_items_counter.innerHTML = no_items_selected;
@@ -97,7 +97,7 @@ function gallery() {
     });
   };
 
-  //Regex function to get no from string gotten from this url: https://stackoverflow.com/questions/10003683/how-can-i-extract-a-number-from-a-string-in-javascript
+  //URL for Regex function to get no from string: https://bit.ly/3cV3pw2
 
   let product_image_index = parseInt(image.src.slice(-19).match(/\d+/)[0]);
   product_gallery_prev_next(prev, next, product_image_index, image);
@@ -155,35 +155,26 @@ const openCloseMenuAndCart = () => {
     open_cart_btn = document.getElementById('cart_btn'),
     cart = document.getElementById('cart');
 
-  function add_class(elem, cl1, cl2) {
-    elem.classList.add(cl1);
-    elem.classList.add(cl2);
-  }
-  function remove_class(elem, cl1, cl2) {
-    elem.classList.remove(cl1);
-    elem.classList.remove(cl2);
-  }
-
   // Open sidebar
   open_sidebar_btn.addEventListener('click', () => {
-    add_class(cart, 'hidden');
-    remove_class(menu, '-translate-x-full', 'opacity-0');
-    remove_class(dark, 'hidden');
-    add_class(document.body, 'overflow-y-hidden');
+    cart.classList.add('hidden');
+    menu.classList.remove('-translate-x-full', 'opacity-0');
+    dark.classList.remove('hidden');
+    document.body.classList.add('overflow-y-hidden');
     setTimeout(() => {
-      remove_class(close_sidebar_btn, 'hidden');
+      close_sidebar_btn.classList.remove('hidden');
     }, 190);
   });
 
   function close_menu(elem) {
     elem.addEventListener('click', () => {
-      add_class(menu, '-translate-x-full', 'pl-8');
+      menu.classList.add('-translate-x-full', 'pl-8');
       setTimeout(() => {
-        add_class(menu, 'opacity-0');
+        menu.classList.add('opacity-0');
       }, 200);
-      add_class(dark, 'hidden');
-      remove_class(document.body, 'overflow-y-hidden');
-      add_class(close_sidebar_btn, 'hidden');
+      dark.classList.add('hidden');
+      document.body.classList.remove('overflow-y-hidden');
+      close_sidebar_btn.classList.add('hidden');
     });
   }
   close_menu(dark);
@@ -192,9 +183,9 @@ const openCloseMenuAndCart = () => {
   // Open and close Cart
   open_cart_btn.addEventListener('click', () => {
     if (cart.classList.contains('hidden')) {
-      remove_class(cart, 'hidden');
+      cart.classList.remove('hidden');
     } else {
-      add_class(cart, 'hidden');
+      cart.classList.add('hidden');
     }
   });
 
