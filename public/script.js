@@ -15,9 +15,8 @@ function values() {
     add_to_cart_btn = document.getElementById('add_to_cart_btn'),
     no_of_items_counter = document.querySelector('#add_to_cart > div > span'),
     increase = document.querySelector('.increase'),
-    reduce = document.querySelector('.reduce');
-
-  const filled_cart = document.getElementById('filled_cart'),
+    reduce = document.querySelector('.reduce'),
+    filled_cart = document.getElementById('filled_cart'),
     price_of_item = document.querySelector('.prod_price'),
     no_of_items = document.querySelector('.no'),
     total_of_item = document.querySelector('.total_cost'),
