@@ -1,0 +1,469 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Online Sneaker Store of affordable sneakers and canvas shoes">
+    <meta name="keywords" content="Sneakers, Shoes, Trainers, canvas">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="stylesheet" href="./tailwind.css">
+
+    <title>Frontend Mentor | E-commerce product page</title>
+  </head>
+  <body class="mx-0 md:px-4 pb-10 md:pb-0 lg:px-24 relative">
+    <!-- NAVIGATION -->
+    <nav aria-label="site navigation" class="
+        flex flex-row
+        justify-between
+        items-center
+        md:border-b
+        border-neutral-grayblue
+        py-6
+        mx-4
+        md:mx-16
+        lg:mx-24
+        font-main
+      ">
+      <div class="flex flex-row justify-evenly items-center">
+        <button id="open" class="md:hidden transform active:scale-90">
+          <img src="images/icon-menu.svg" alt="open menu button">
+        </button>
+        <img src="images/logo.svg" alt="Sneakers Logo" class="ml-4 md:ml-0 md:mr-4 lg:mr-10 relative md:w-full">
+
+        <!-- Dark Background -->
+        <div id="dark_bg" class="
+            hidden
+            absolute
+            bg-neutral-vdarkgrayblue
+            opacity-50
+            z-10
+            inset-0
+            h-screen
+            w-screen
+            overflow-y-hidden
+          "></div>
+        <button id="x" class="
+            absolute
+            top-0
+            left-0
+            z-30
+            pl-8
+            pt-6
+            hidden
+            md:hidden
+            transition-opacity
+            duration-500
+          ">
+          <img class="w-4" src="images/icon-close.svg" alt="close menu button">
+        </button>
+
+        <ul id="menu" class="
+            opacity-0
+            transform
+            -translate-x-full
+            md:translate-x-0
+            transition-transform
+            ease-in
+            duration-200
+            flex flex-col
+            absolute
+            top-0
+            left-0
+            w-3/5
+            z-20
+            bg-white
+            space-y-6
+            font-bold
+            pl-8
+            text-neutral-vdarkgrayblue
+            h-screen
+            text-2xl
+            pt-20
+            md:opacity-100
+            md:text-lg
+            md:h-0
+            md:pl-0
+            md:pt-0
+            md:w-full
+            md:relative
+            md:flex-row
+            md:items-center
+            md:-space-y-0
+            md:space-x-2
+            lg:space-x-4
+            md:text-neutral-dgrayblue md:opacity-100
+          ">
+          <li><a href="#" class="link_transition">Collections</a></li>
+          <li>
+            <a href="#" class="link_transition">Men</a>
+          </li>
+          <li>
+            <a href="#" class="link_transition">Women</a>
+          </li>
+          <li><a href="#" class="link_transition">About</a></li>
+          <li><a href="#" class="link_transition">Contact</a></li>
+        </ul>
+      </div>
+
+      <div id="avatar" class="flex flex-row justify-evenly items-center">
+        <button id="cart_btn" class="relative">
+          <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg" aria-labelledby="cartId cartDesc" role="img" class="
+              fill-current
+              text-neutral-dgrayblue
+              hover:text-black
+              transition
+              duration-200
+              ease-in
+            ">
+            <title id="cartId">Cart</title>
+            <desc id="cartDesc">
+              Items added to the cart can be accessed here
+            </desc>
+            <path d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z" fill-rule="nonzero"></path>
+          </svg>
+          <div id="cart_item_no" class="
+              absolute
+              top-itemNo
+              right-itemNo
+              h-3
+              w-cart
+              bg-primary-orange
+              rounded-3xl
+              grid
+              place-items-center
+              text-white
+              font-bold
+              text-xxs
+              opacity-0
+            ">
+            <small></small>
+          </div>
+        </button>
+
+        <div tabindex="0" class="
+            ml-4
+            lg:ml-10
+            w-8
+            md:w-12
+            lg:w-14
+            border-2 border-transparent
+            rounded-full
+            hover:border-primary-orange
+            focus:outline-none focus:border-primary-orange
+            overflow-hidden
+            cursor-pointer
+            transition
+            duration-200
+            ease-in
+          ">
+          <img src="images/image-avatar.png" alt="avatar" class="focus:outline-none object-cover">
+        </div>
+      </div>
+
+      <!-- CART -->
+      <div id="cart" class="
+          hidden
+          w-80
+          h-56
+          sm:w-96
+          flex flex-col
+          justify-center
+          items-center
+          lg:-right-24
+          rounded-xl
+          shadow-2xl
+          z-20
+          bg-white
+          absolute
+          transform
+          -translate-x-1/2
+          top-22
+          left-1/2
+          md:left-75
+          lg:left-80
+        ">
+        <header id="card_header" class="
+            border-b border-neutral-lgrayblue
+            w-full
+            h-1/4
+            flex
+            items-center
+            py-4
+          ">
+          <span class="text-md ml-6 font-bold">Cart</span>
+
+          <!-- Empty cart -->
+        </header>
+        <div id="card_body" class="text-center h-3/4 flex flex-col w-full justify-center">
+          <span id="empty_cart" class="text-neutral-dgrayblue text-md font-bold">Your cart is empty</span>
+
+          <!-- Filled Cart -->
+          <div id="filled_cart" class="text-neutral-dgrayblue mx-6 mt-5 hidden">
+            <div class="grid gap-4 mb-4" style="grid-template-columns: auto 1fr auto">
+              <figure class="thumb_style">
+                <img class="w-14" src="images/image-product-1-thumbnail.jpg" alt="">
+              </figure>
+              <div class="text-left">
+                <p>Fall Limited Edition Sneakers</p>
+                <div id="pricing">
+                  <p class="prod_price text-base inline-block"></p>
+                  <span class="no"></span>
+                  <span class="total_cost font-bold text-black"></span>
+                </div>
+              </div>
+              <figure class="flex items-center">
+                <img id="delete_item" class="w-auto cursor-pointer" src="images/icon-delete.svg" alt="delete item from cart button">
+              </figure>
+            </div>
+            <button class="
+                text-center
+                w-full
+                mb-6
+                bg-primary-orange
+                py-4
+                px-16
+                text-white
+                font-bold
+                rounded-xl
+                hover:opacity-50
+                focus:outline-none
+                :opacity-50
+                transition
+                duration-200
+                ease-in
+              ">
+              Checkout
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- PRODUCT -->
+    <main id="product" class="
+        relative
+        grid grid-cols-1
+        gap-2
+        pt-0
+        md:grid-cols-2 md:pt-20 md:px-14
+        w-full
+        items-center
+      ">
+      <!-- PRODUCT GALLERY -->
+      <div id="product_gallery" class="flex flex-col items-center justify-center w-full relative">
+        <figure class="
+            md:rounded-lg
+            overflow-hidden
+            w-full
+            min-h-64
+            md:h-full md:w-3/5
+          ">
+          <img id="product_image" src="images/image-product-1.jpg" alt="Fall Limited Edition Sneakers" class="w-full object-cover" loading="lazy">
+        </figure>
+
+        <div class="w-full px-3 sm:px-5 absolute flex justify-between md:hidden">
+          <button id="prev" class="bg-white grid place-items-center w-10 h-10 rounded-50">
+            <img src="images/icon-previous.svg" alt="previous">
+          </button>
+          <button id="next" class="bg-white grid place-items-center w-10 h-10 rounded-50">
+            <img src="images/icon-next.svg" alt="next">
+          </button>
+        </div>
+
+        <!-- Product Thumbnails -->
+        <div id="thumbs" class="hidden w-3/5 md:grid grid-cols-4 gap-4 mt-6">
+          <div tabindex="0" class="thumb_container thumb_style">
+            <img src="images/image-product-1-thumbnail.jpg" alt="" class="thumbnail">
+          </div>
+          <div tabindex="0" class="thumb_container thumb_style">
+            <img src="images/image-product-2-thumbnail.jpg" alt="" class="thumbnail">
+          </div>
+          <div tabindex="0" class="thumb_container thumb_style">
+            <img src="images/image-product-3-thumbnail.jpg" alt="" class="thumbnail">
+          </div>
+          <div tabindex="0" class="thumb_container thumb_style">
+            <img src="images/image-product-4-thumbnail.jpg" alt="" class="thumbnail">
+          </div>
+        </div>
+      </div>
+
+      <!-- LIGHTBOX -->
+      <div id="lightbox" class="
+          hidden
+          absolute
+          top-1/2
+          left-1/2
+          transform
+          -translate-x-1/2 -translate-y-1/2
+          flex flex-col
+          items-center
+          justify-center
+          z-20
+        " style="width: 400.5px; height: auto">
+        <figure class="
+            md:rounded-lg
+            overflow-hidden
+            min-h-64
+            md:h-full
+            w-full
+            relative
+            h-96
+          ">
+          <img id="lb_product_image" src="images/image-product-1.jpg" alt="Fall Limited Edition Sneakers cart" class="w-full object-cover" loading="lazy">
+        </figure>
+
+        <!-- Lightbox Thumbnails -->
+        <div id="lightbox_thumbs" class="hidden w-3/4 md:grid grid-cols-4 gap-4 mt-4 px-3 m-auto">
+          <div tabindex="0" class="thumb_light_container relative">
+            <img src="images/image-product-1-thumbnail.jpg" alt="" class="w-full" loading="lazy">
+          </div>
+          <div tabindex="0" class="thumb_light_container relative">
+            <img src="images/image-product-2-thumbnail.jpg" alt="" class="w-full" loading="lazy">
+          </div>
+          <div tabindex="0" class="thumb_light_container relative">
+            <img src="images/image-product-3-thumbnail.jpg" alt="" class="w-full" loading="lazy">
+          </div>
+          <div tabindex="0" class="thumb_light_container relative">
+            <img src="images/image-product-4-thumbnail.jpg" alt="" class="w-full" loading="lazy">
+          </div>
+        </div>
+
+        <button class="
+            lb_prev
+            absolute
+            -left-4
+            top-48
+            z-30
+            bg-white
+            grid
+            place-items-center
+            w-8
+            h-8
+            rounded-50
+          ">
+          <svg class="
+              w-3
+              stroke-current
+              text-black
+              hover:text-primary-orange
+              trans
+            " aria-labelledby="prevDesc prevID" width="12" height="18" xmlns="http://www.w3.org/2000/svg">
+            <title id="prevID">Cart</title>
+            <desc id="prevDesc">previous button for light box gallery</desc>
+            <path d="M11 1 3 9l8 8" stroke-width="2" fill="none" fill-rule="evenodd"></path>
+          </svg>
+        </button>
+        <button class="
+            lb_next
+            absolute
+            -right-4
+            top-48
+            z-30
+            bg-white
+            grid
+            place-items-center
+            w-8
+            h-8
+            rounded-50
+          ">
+          <svg class="
+              w-3
+              stroke-current
+              text-black
+              hover:text-primary-orange
+              trans
+            " aria-labelledby="nextID nextDesc" width="13" height="18" xmlns="http://www.w3.org/2000/svg">
+            <title id="nextID">Cart</title>
+            <desc id="nextDesc">previous button for light box gallery</desc>
+            <path d="m2 1 8 8-8 8" stroke-width="2" fill="none" fill-rule="evenodd"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- PRODUCT DETAILS -->
+      <div id="product_details" class="w-full px-4 mt-6 md:mx-0 md:mt-0">
+        <h1 class="text-sm font-bold text-primary-orange uppercase mb-3">
+          sneaker company
+        </h1>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 max-w-sm">
+          Fall Limited Edition Sneakers
+        </h2>
+        <p class="text-sm text-neutral-dgrayblue mb-3 max-w-sm">
+          These low-profile sneakers are your perfect casual wear companion.
+          Featuring a durable rubber outer sole, they’ll withstand everything
+          the weather can offer
+        </p>
+
+        <div class="flex items-center">
+          <h3 id="item_value" class="text-lg font-bold inline-block"></h3>
+          <span class="
+              text-xs
+              px-0.5
+              ml-3
+              bg-primary-paleorange
+              text-primary-orange
+              font-bold
+            ">50%</span>
+        </div>
+        <small class="text-neutral-grayblue block line-through text-xs">$250.00</small>
+
+        <div id="add_to_cart" class="flex flex-col md:flex-row md:justify-start mt-4 gap-2">
+          <div class="
+              inline-block
+              bg-neutral-lgrayblue
+              flex
+              justify-between
+              items-center
+              rounded-lg
+            ">
+            <button class="
+                reduce
+                px-7
+                py-3
+                md:pr-6 md:pl-3
+                text-primary-orange
+                font-bold
+                h-full
+              ">
+              -
+            </button>
+            <span class="text-sm font-bold">0</span>
+            <button class="
+                px-7
+                py-3
+                h-full
+                md:pl-6 md:pr-3
+                text-primary-orange
+                font-bold
+                increase
+              ">
+              +
+            </button>
+          </div>
+
+          <button id="add_to_cart_btn" class="
+              md:ml-3 md:w-50
+              flex
+              justify-center
+              items-center
+              bg-primary-orange
+              py-3
+              px-10
+              lg:px-16
+              text-white
+              rounded-lg
+              hover:opacity-50
+              transition
+              duration-200
+              ease-in
+            ">
+            <img src="images/icon-cart.svg" alt="add to cart button" class="w-4">
+            <span class="ml-2 text-sm font-bold">Add to cart</span>
+          </button>
+        </div>
+      </div>
+    </main>
+    <script type="module" src="script.js"></script>
+  
+
+</body></html>
